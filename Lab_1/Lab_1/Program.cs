@@ -109,60 +109,76 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("D= " + D);
                 if (a == 0)
                 {
-                    x1 = Math.Sqrt((-c) / b);
-                    x2 = -x1;
-                    Console.WriteLine("x1= " + x1);
-                    Console.WriteLine("x2= " + x2);
-                }
-                if (b == 0)
-                {
-                    x1 = Math.Pow((-c) / a, 0.25);
-                    x2 = -x1;
-                    Console.WriteLine("x1= " + x1);
-                    Console.WriteLine("x2= " + x2);
-                }
-                if (D == 0)
-                {
-                    y1 = (-b) / (2 * a);
-                    x1 = Math.Sqrt(y1);
-                    x2 = -x1;
-                    Console.WriteLine("x1= " + x1);
-                    Console.WriteLine("x2= " + x2);
+                    if ((-c) / b >= 0)
+                    {
+                        x1 = Math.Sqrt((-c) / b);
+                        x2 = -x1;
+                        Console.WriteLine("x1= " + x1);
+                        Console.WriteLine("x2= " + x2);
+                    }
+                    else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("корней нет"); }
                 }
                 else
                 {
-                    y1 = (-b + Math.Sqrt(D)) / (2 * a);
-                    y2 = (-b - Math.Sqrt(D)) / (2 * a);
-                    if ((y1 != 0) && (y2 != 0))
+                    if (b == 0)
                     {
-                        x1 = Math.Sqrt(y1);
-                        x2 = -x1;
-                        x3 = Math.Sqrt(y2);
-                        x4 = -x3;
-                        Console.WriteLine("x1= " + x1);
-                        Console.WriteLine("x2= " + x2);
-                        Console.WriteLine("x3= " + x3);
-                        Console.WriteLine("x4= " + x4);
-
-                    }
-                    else if (y1 == 0)
-                    {
-                        Console.WriteLine("x1= 0");
-                        x3 = Math.Sqrt(y2);
-                        x4 = -x3;
-                        Console.WriteLine("x2= " + x3);
-                        Console.WriteLine("x3= " + x4);
-
+                        if ((-c) / a >= 0)
+                        {
+                            x1 = Math.Pow((-c) / a, 0.25);
+                            x2 = -x1;
+                            Console.WriteLine("x1= " + x1);
+                            Console.WriteLine("x2= " + x2);
+                        }
+                        else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("корней нет"); }
                     }
                     else
                     {
-                        Console.WriteLine("x1= 0 ");
-                        x3 = Math.Sqrt(y1);
-                        x4 = -x3;
-                        Console.WriteLine("x2= " + x3);
-                        Console.WriteLine("x3= " + x4);
-                    }
+                        if (D == 0)
+                        {
+                            y1 = (-b) / (2 * a);
+                            x1 = Math.Sqrt(y1);
+                            x2 = -x1;
+                            Console.WriteLine("x1= " + x1);
+                            Console.WriteLine("x2= " + x2);
+                        }
+                        else
+                        {
+                            y1 = (-b + Math.Sqrt(D)) / (2 * a);
+                            y2 = (-b - Math.Sqrt(D)) / (2 * a);
+                            if ((y1 >0) && (y2 >0))
+                            {
+                                x1 = Math.Sqrt(y1);
+                                x2 = -x1;
+                                x3 = Math.Sqrt(y2);
+                                x4 = -x3;
+                                Console.WriteLine("x1= " + x1);
+                                Console.WriteLine("x2= " + x2);
+                                Console.WriteLine("x3= " + x3);
+                                Console.WriteLine("x4= " + x4);
 
+                            }
+                            else if ((y1 <= 0)&&(y2>0))
+                            {
+                                if (y1==0) Console.WriteLine("x1= 0");
+                                x3 = Math.Sqrt(y2);
+                                x4 = -x3;
+                                Console.WriteLine("x2= " + x3);
+                                Console.WriteLine("x3= " + x4);
+
+                            }
+                            else if ((y2<=0)&&(y1>0))
+                            {
+                                if (y2 == 0) Console.WriteLine("x1= 0 ");
+                                x3 = Math.Sqrt(y1);
+                                x4 = -x3;
+                                Console.WriteLine("x2= " + x3);
+                                Console.WriteLine("x3= " + x4);
+                            }
+                            else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("корней нет"); }
+           
+
+                        }
+                    }
                 }
             }
             Console.ReadLine();
