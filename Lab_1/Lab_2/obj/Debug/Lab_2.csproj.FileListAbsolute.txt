@@ -1,0 +1,7 @@
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\bin\Debug\Lab_2.exe.config
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\bin\Debug\Lab_2.exe
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\bin\Debug\Lab_2.pdb
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\obj\Debug\Lab_2.csprojAssemblyReference.cache
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\obj\Debug\Lab_2.csproj.CoreCompileInputs.cache
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\obj\Debug\Lab_2.exe
+C:\mygit\BCIT_Lab\Lab_1\Lab_2\obj\Debug\Lab_2.pdb
