@@ -12,8 +12,8 @@ namespace ConsoleApp1
         {
             double a, b, c, D; string a_str, b_str, c_str; int f = 0;
             double y1, y2, x1, x2, x3, x4;
-            //if (args.Length == 0)
-            //{
+            if (args.Length == 0)
+            {
                 Console.Title = "Мащенко Елена ИУ5-35Б";
                 Console.WriteLine("Введите коэффициенты для биквадратного уравнения");
                 Console.WriteLine("a= ");
@@ -103,13 +103,14 @@ namespace ConsoleApp1
                 }
                 Console.ResetColor();
                 c = Convert.ToDouble(c_str);
-            //}
-            //else
-            //{
-            //    a = Convert.ToDouble(args[0]);
-            //    b = Convert.ToDouble(args[1]);
-            //    c = Convert.ToDouble(args[2]);
-            //}
+            }
+            else
+            {
+                a = Convert.ToDouble(args[0]);
+                b = Convert.ToDouble(args[1]);
+                c = Convert.ToDouble(args[2]);
+
+            }
             D = Math.Pow(b, 2) - 4 * a * c;
             if (D < 0) { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("D= " + D + "=> нет корней"); }
             else
@@ -149,8 +150,16 @@ namespace ConsoleApp1
                                 y1 = (-b) / (2 * a);
                                 x1 = Math.Sqrt(y1);
                                 x2 = -x1;
-                                Console.WriteLine("x1= " + x1);
-                                Console.WriteLine("x2= " + x2);
+                                if (y1 > 0)
+                                {
+                                    Console.WriteLine("x1= " + x1);
+                                    Console.WriteLine("x2= " + x2);
+                                }
+                                if (y1==0)
+                                {
+                                    Console.WriteLine("x1= " + x1);
+                                }
+                                else { Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("корней нет"); }
                             }
                             else
                             {
