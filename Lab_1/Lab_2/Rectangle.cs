@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_2
 {
-    class Rectangle : GiometricalFigure,IPrint
+    public class Rectangle : GiometricalFigure,IPrint
     {
         private double _property_width = 0;
         private double _property_length = 0;

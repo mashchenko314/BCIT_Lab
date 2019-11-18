@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_2
 {
-    class Kvadrat:Rectangle,IPrint
+    public class Kvadrat:Rectangle,IPrint
     {
         public Kvadrat (double widht,double lenght) : base(widht,lenght) {
             property_width = lenght;

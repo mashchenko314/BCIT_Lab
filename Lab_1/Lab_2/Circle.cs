@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_2
 {
-    class Circle : GiometricalFigure,IPrint
+   public class Circle : GiometricalFigure,IPrint
     {
         private double _property_radius = 0;
         public double property_radius
