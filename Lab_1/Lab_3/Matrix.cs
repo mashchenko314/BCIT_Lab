@@ -105,7 +105,8 @@ namespace Lab_3
                     for (int i = 0; i < this.maxX; i++)
                     {
                         if (i > 0) b.Append("\t");
-                        b.Append(this[i, j, k].ToString());
+                        
+                       b.Append(this[i, j, k].ToString());
                     }
                     b.Append("]\n");
                 }
