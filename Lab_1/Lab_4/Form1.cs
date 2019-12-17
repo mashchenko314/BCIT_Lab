@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,25 +20,33 @@ namespace Lab_4
         List<string> list = new List<string>();
         private void button3_Click(object sender, EventArgs e)
         {
-            string required_word = textBox3.Text;
-
-            System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
-            stopWatch.Start();
-            foreach (string word in list)
+            string word = this.textBox3.Text.Trim();        //Слово для поиска
+            if (!string.IsNullOrWhiteSpace(word) && list.Count > 0)     //Если слово для поиска не пусто
             {
-                if (word.Contains(required_word))
+                string wordUpper = word.ToUpper();   
+                List<string> tempList = new List<string>();      
+                Stopwatch t = new Stopwatch(); //определение времени поиска
+                t.Start();
+                foreach (string str in list)
                 {
-                    listBox1.BeginUpdate();
-                    listBox1.Items.Add(word);
-                    listBox1.EndUpdate();
+                    if (str.ToUpper().Contains(wordUpper))
+                    {
+                        tempList.Add(str);
+                    }
                 }
+                if (tempList.Count == 0)
+                {
+                    MessageBox.Show("Искомое слово не найдено!");
+                }
+                t.Stop();
+                this.textBox2.Text = t.Elapsed.ToString();
+                listBox1.SelectedIndex = listBox1.FindStringExact(textBox3.Text);
+                L_distanse(textBox3.Text);
             }
-            stopWatch.Stop();
-
-            TimeSpan time = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", time.Hours, time.Minutes, time.Seconds, time.Milliseconds / 10);
-
-            textBox2.Text = elapsedTime;
+            else
+            {
+                MessageBox.Show("Необходимо выбрать файл и ввести слово для поиска");
+            }
 
         }
 
@@ -78,11 +87,46 @@ namespace Lab_4
 
                 TimeSpan time = stopWatch.Elapsed;
                 string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", time.Hours, time.Minutes, time.Seconds, time.Milliseconds / 10);
-
                 textBox1.Text = elapsedTime;
+                add_to_list_box(list);
+
 
             }
 
         }
+        void add_to_list_box(List<string> arr)
+        {
+          
+            listBox1.Items.Clear();
+            listBox1.BeginUpdate();
+            foreach (string l in arr)
+            {
+                listBox1.Items.Add(l);
+            }
+            listBox1.EndUpdate();
+            
+        }
+        int L_distanse(string word)
+        {
+            listBox2.Items.Clear();
+            int a = 0;
+            bool f = int.TryParse(textBox4.Text, out a);
+            if (!f || a < 0 || a % 1 != 0)
+            {
+                MessageBox.Show("Параметр введен неверно!");
+                listBox2.Items.Clear();
+                return 0;
+            }
+            listBox2.BeginUpdate();
+            foreach (string s in listBox1.Items)
+            {
+                if (Lab_5.DisDamLev.Distance(word, s) <= a)
+                    listBox2.Items.Add(s);
+            }
+            listBox2.EndUpdate();
+            return 0;
+        }
+
+       
     }
 }
