@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Lab_5
 {
@@ -34,6 +38,6 @@ namespace Lab_5
             }
             return matrix[str1Len, str2Len]; //Возвращается нижний правый элемент матрицы
         }
-        
+
     }
 }
